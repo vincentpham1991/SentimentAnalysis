@@ -1,57 +1,57 @@
-Files that must be downloaded from
-https://www.cs.cornell.edu/people/pabo/movie-review-data/
+## Sentiment Analysis of Movie Reviews
 
-"polarity dataset v2.0" -> get the "neg" and "pos" folder
-"subjectivity dataset v1.0" -> get "plot.tok.gt9.5000" and  "quote.tok.gt9.5000"
-	append .txt at the end of the name
+Files were obtained from [here](https://www.cs.cornell.edu/people/pabo/movie-review-data/). The main task of this machine learning project is to identify whether a movie review is positive or negative. Different variations were used and compared. In addition, I also coded this up in spark using both the mllib library version and a self Spark coded version for naive bayes. 
 
-put all of these files in a single folder
-	-> in this txt, we'll refer to the generic folder as my_directory
-	-> my_directory should contain:
-		neg
-		pos
-		plot.tok.gt9.5000.txt
-		quote.tok.gt9.5000.txt
+The specific files that are required to be downloaded are: 
+
+"polarity dataset v2.0" -> get "neg" and "pos" folder
+
+"subjectivity dataset v1.0" -> get "plot.tok.gt9.5000" and  "quote.tok.gt9.5000" (append .txt at the end of the name)
+
+### Files:
+
+###### naive-bayes.py
+###### subjectivity_nb.py
+###### bernoulli_nb.py
+###### naive_bayes_mllib.py
+###### naive_bayes_spark.py (Self coded a naibe bayes algorithm in Spark)
 
 
-This folder contains three main files:
-naive-bayes.py
-subjectivity_nb.py
-bernoulli_nb.py
 
-And 3 auxiliary files:
-naive_bayes_auxiliary.py
-subjectivity_auxiliary.py
-bernoulli_auxiliary.py
+#### And 3 auxiliary files:
 
-And the files directory:
-(my_directory)
+###### naive_bayes_auxiliary.py
+###### subjectivity_auxiliary.py
+###### bernoulli_auxiliary.py
 
-How to run:
+### How to run:
 
-naive-bayes.py contains the base algorithm.
+__naive-bayes.py__ contains the base algorithm.
+
 To run type:
+
 	python naive-bayes -d my_directory
 
+where my_directory is the files directory
 
-subjectivity_nb.py contains sentences filtered by subjectivity then the base
-	classifier is ran.
+__subjectivity_nb.py__ contains sentences filtered by subjectivity. Algorithm inspired by [Pang and Lee 2004](http://www.cs.cornell.edu/home/llee/papers/cutsent.pdf) 
+
 To run type:
+
 	python subjectivity_nb -d my_directory
 
-Note: you will need the txt files mentioned above in the same folder as
-	pos and neg.
-Note: algorithm inspired by
-	http://www.cs.cornell.edu/home/llee/papers/cutsent.pdf
-
-
-bernoulli_nb.py contains the algorithm that depends on whether a word was
-	present or not.
+__bernoulli_nb.py__ contains the algorithm that depends on whether a word was present or not. Algorithim described [here](http://nlp.stanford.edu/IR-book/html/htmledition/the-bernoulli-model-1.html#fig:bernoullialg)
+	
 To run type:
+
 	python bernoulli_nb -d my_directory
 
-Note: algorithm was obtained at
-	http://nlp.stanford.edu/IR-book/html/htmledition/the-bernoulli-model-1.html#fig:bernoullialg
-Note: takes longer than the other 2 previous algorithm to run
-	(~ 3 minutes on my computer)
+Note: takes longer than the other 2 previous algorithm to run (~ 3 minutes on my computer)
 
+__naive_bayes_mllib.py__ used naive bayes algorithm in Spark's mllib library.
+
+To run, copy and paste code into pySpark shell. 
+
+__naive_bayes_spark.py__ is a self coded a naive bayes algorithm in Spark. 
+
+To run, created an EMR instance and run code on AWS. Alternatively, run it on your local computer but leave out the remote machines part. 
