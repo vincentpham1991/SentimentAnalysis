@@ -14,7 +14,7 @@ The specific files that are required to be downloaded are:
 ###### subjectivity_nb.py
 ###### bernoulli_nb.py
 ###### naive_bayes_mllib.py
-###### naive_bayes_spark.py (Self coded a naibe bayes algorithm in Spark)
+###### naive_bayes_spark.py 
 
 
 
